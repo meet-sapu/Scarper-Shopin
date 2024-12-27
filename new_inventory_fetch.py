@@ -34,6 +34,9 @@ def fetch_inventory(sku_base, colors, gender="WOMAN"):
     suf_list = ["-I2024", "-V2025"]
     for suf in suf_list:
         url = create_api_string(sku_base, colors, suf, gender)
+        # print("==========================================")
+        # print("url: ", url)
+        # print("==========================================\n")
         try:
             response = requests.get(url, headers=headers)
             response.raise_for_status()
@@ -94,6 +97,9 @@ def process_inventory_changes(master_file, output_removal_file, output_new_file)
         
         # Fetch current inventory
         inventory_data = fetch_inventory(sku_base, colors)
+        print("===============  inventory_data  ====================")
+        print("inventory_data: ", inventory_data)
+        print("===================================\n")
         
         # Process inventory data
         current_sizes_by_color = {}
